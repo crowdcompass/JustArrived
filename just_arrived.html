@@ -1,6 +1,6 @@
 <head>
   <title>JustArrived | CrowdCompass</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 </head>
 
@@ -28,17 +28,16 @@
   {{#if registrationSubmitted }}
     <h2>Thanks for announcing your arrival!</h2>
   {{else }}
-  <h2>Announce your arrival!</h2>
-    <p>Share that you've arrived with others here, and help people connect with you after the event.</p>
+    <p>Share your arrival with others, and stay connected after the event.</p>
     <form>
       {{#if showBadEmail}}
         {{> badEmail}}
       {{/if}}
-      <label>Name</label><input id="name" placeholder="Your Name">
-      <label>Company</label><input id="company" placeholder="Your Company">
-      <label>Email</label><input id="email" placeholder="Your Email">
-      <label>Twitter</label><input id="twitter" placeholder="Your Twitter ID">
-      <button>Send</button>
+      <label>Name</label><input id="name" placeholder="Arthur Digby Sellers" type="text">
+      <label>Company</label><input id="company" placeholder="Sentinel Productions, Inc." type="text">
+      <label>Email</label><input id="email" placeholder="ad.sellers@sentinelprod.com" type="email">
+      <label>Twitter</label><input id="twitter" placeholder="@DigbySellers" type="text">
+      <button>Announce Your Arrival!</button>
   {{/if}}
  		</form>
 </template>
