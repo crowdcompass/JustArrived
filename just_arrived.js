@@ -50,8 +50,8 @@ if (Meteor.isClient) {
     return Session.get("showBadEmail");
   };
 
-  Template.registration.emailSubmitted = function () {
-    return Session.get("emailSubmitted");
+  Template.registration.registrationSubmitted = function () {
+    return Session.get("registrationSubmitted");
   };
 
   Template.footer.isAdmin = function() {
