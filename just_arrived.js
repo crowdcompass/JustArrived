@@ -33,7 +33,7 @@ if (Meteor.isClient) {
       var company = tmpl.find('#company').value;
       var twitter = tmpl.find('#twitter').value;
       var email = tmpl.find('#email').value
-      , doc = {email: email, company: company, twitter_id: twitter, referrer: document.referrer, timestamp: new Date()};
+      , doc = {name: name, email: email, company: company, twitter_id: twitter, referrer: document.referrer, timestamp: new Date()};
 
       if (EMAIL_REGEX.test(email)){
         Session.set("showBadEmail", false);
@@ -62,7 +62,7 @@ if (Meteor.isClient) {
     return Session.get("showAdmin");
   };
 
-  Template.admin.emails = function() {
+  Template.admin.attendees = function() {
     return Attendees.find().fetch();
   };
 }
@@ -78,9 +78,9 @@ if (Meteor.isServer) {
   });
 
   Meteor.publish("attendees", function() {
-    if (isAdmin(this.userId)) {
+    // if (isAdmin(this.userId)) {
       return Attendees.find();
-    }
+    // }
   });
   
   Meteor.methods({

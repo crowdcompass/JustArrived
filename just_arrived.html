@@ -26,6 +26,21 @@
 <template name = "registration">
   {{#if registrationSubmitted }}
     <h1>Thanks for announcing your arrival!</h1>
+    
+    <!-- <table>
+    <tr>
+      <th>Attendee</th><th>Company</th>
+      <th>Email</th><th>Twitter</th>
+      <th>Referrer</th><th>Time</th></tr>
+    {{#each attendees}}
+      <tr>
+          <td>{{ this.name }}</td><td>{{ this.company }}</td>
+          <td>{{ this.email }}</td><td>{{ this.twitter_id }}</td>
+          <td>{{ this.referrer }}</td><td>{{ this.timestamp }}</td>
+      </tr>
+    {{/each }} -->
+  </table>
+
   {{else }}
   <h1>Announce your arrival!</h1>
     <p>Share that you've arrived with others here, and help people connect with you after the event.</p>
