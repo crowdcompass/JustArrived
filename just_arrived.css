@@ -1,6 +1,6 @@
 body{
-  background-color:#31373c;
-  color:#fff;
+  background-color:#faf4f1;
+  color:#444;
   font-family:helvetica, arial, sans;
   margin:0; padding:0;
   font-size:1.1em;
@@ -15,15 +15,20 @@ h1, h2, h3, h4 {
   width:100%;
   background-color:#39c;
   text-align:center;
-  padding:2em;
+  padding:1em 0;
   margin:0;
-  margin-bottom:1em;
+  margin-bottom:2em;
+}
+
+h1 {
+  margin: 0;
+  color: white;
 }
 
 .content{
   margin:0 auto;
-  width:30em;
-  padding:2em;
+  width:540px;
+  padding:0 20px 20px 20px;
   font-weight:lighter;
   text-align:center;
 }
@@ -44,12 +49,13 @@ h1, h2, h3, h4 {
 form{
   width:30em;
   position:relative;
+  text-align: right;
 }
 
-input{
+/*input{
   border-radius:2px 0 0 2px;
   width: 80%;
-}
+}*/
 button{
  background-color:#39c;
  color:#fff;
@@ -60,7 +66,23 @@ button:hover{
   cursor:pointer;
 }
 
-input, button{
+input {
+  padding:8px 10px;
+  line-height: normal !important;
+  border:3px solid #e9e9e9;
+  margin:5px 5%;
+  vertical-align:middle;
+  font-size:20px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-sizing: content-box; /* or `border-box` */
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 70%;
+}
+
+button {
   padding:8px 10px;
   line-height: normal !important;
   border:none;
@@ -70,8 +92,7 @@ input, button{
   -moz-box-sizing: content-box; /* or `border-box` */
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
-  }
-
+}
 
 .mask {
     position: absolute;
