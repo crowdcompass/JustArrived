@@ -57,11 +57,12 @@
     	<th>Attendee</th><th>Company</th>
     	<th>Email</th><th>Twitter</th>
     	<th>Referrer</th><th>Time</th></tr>
-    {{#each Attendees}}
+    {{#each attendees}}
       <tr>
       		<td>{{ this.name }}</td><td>{{ this.company }}</td>
       		<td>{{ this.email }}</td><td>{{ this.twitter_id }}</td>
-      		<td>{{ this.referrer }}</td><td>{{ this.timestamp }}</td></tr>
+      		<td>{{ this.referrer }}</td><td>{{ this.timestamp }}</td>
+      </tr>
     {{/each }}
   </table>
 </template>
