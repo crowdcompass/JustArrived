@@ -216,6 +216,12 @@ table th {
   border-left: 1px solid #ddd;
   text-align: center;
 }
+table td {
+  border-left: 1px solid #ddd;
+}
+table tbody tr:nth-child(odd) td {
+  background-color: #f9f9f9;
+}
 table thead:first-child tr:first-child th {
   border-top: 0;
 }

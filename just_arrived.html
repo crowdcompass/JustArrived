@@ -66,6 +66,7 @@
         <th>Time</th>
       </tr>
     </thead>
+    <tbody>
     {{#each attendees}}
       <tr>
       		<td>{{ this.name }}</td><td>{{ this.company }}</td>
@@ -73,6 +74,7 @@
       		<td>{{ this.referrer }}</td><td>{{ this.timestamp }}</td>
       </tr>
     {{/each }}
+  </tbody>
   </table>
 </template>
 
