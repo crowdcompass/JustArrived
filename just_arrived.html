@@ -1,0 +1,74 @@
+<head>
+  <title>JustArrived | CrowdCompass</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  <div class='header'>
+  </div>
+  <div class='content'>
+  	{{> main}}
+  </div>
+  <div class='footer'>
+  	{{> footer}}
+  </div>
+</body>
+
+<template name="main">
+  {{#if showAdmin}}
+    {{> admin}}
+ {{else}}
+    {{> registration}}
+ {{/if}}
+</template>
+
+<template name = "registration">
+  {{#if registrationSubmitted }}
+    <h1>Thanks for announcing your arrival!</h1>
+  {{else }}
+  <h1>Announce your arrival!</h1>
+    <p>Share that you've arrived with others here, and help people connect with you after the event.</p>
+    <form>
+      {{#if showBadEmail}}
+        {{> badEmail}}
+      {{/if}}
+      <label>Name</label><input id="name" placeholder="Your Name">
+      <label>Company</label><input id="company" placeholder="Your Company">
+      <label>Email</label><input id="email" placeholder="Your Email">
+      <label>Twitter</label><input id="twitter" placeholder="Your Twitter ID">
+      <button>Send</button>
+  {{/if}}
+ 		</form>
+</template>
+
+<template name = "footer">
+  <a href = "http://crowdcompass.com">CrowdCompass | An Essential Part of Your Next Event</a>
+  {{#if isAdmin}}
+  | <a href = "#" class = "admin">toggle admin</a>
+  {{/if}}
+  | {{loginButtons}}
+</template>
+
+<template name = "admin">
+  <h1>Registered Attendees</h1>
+  <table>
+    <tr>
+    	<th>Attendee</th><th>Company</th>
+    	<th>Email</th><th>Twitter</th>
+    	<th>Referrer</th><th>Time</th></tr>
+    {{#each Attendees}}
+      <tr>
+      		<td>{{ this.name }}</td><td>{{ this.company }}</td>
+      		<td>{{ this.email }}</td><td>{{ this.twitter_id }}</td>
+      		<td>{{ this.referrer }}</td><td>{{ this.timestamp }}</td></tr>
+    {{/each }}
+  </table>
+</template>
+
+<template name="badEmail">
+  <div class="error">
+    <p>That's not a real email address...</p>
+  </div>
+</template>
+
