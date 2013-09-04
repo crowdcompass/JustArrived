@@ -28,7 +28,7 @@
   {{#if registrationSubmitted }}
     <h2>Thanks for announcing your arrival!</h2>
   {{else }}
-    <p>Share your arrival with others, and stay connected after the event.</p>
+    <p>Share your arrival with others and stay connected after the event.</p>
     <form>
       {{#if showBadEmail}}
         {{> badEmail}}
@@ -44,19 +44,28 @@
 
 <template name = "footer">
   <a href = "http://crowdcompass.com">CrowdCompass | An Essential Part of Your Next Event</a>
-  {{#if isAdmin}}
-  | <a href = "#" class = "admin">toggle admin</a>
-  {{/if}}
-  | {{loginButtons}}
+  
+  <div class="admin">
+    {{#if isAdmin}}
+    <a href = "#" class = "admin">toggle admin</a> | 
+    {{/if}}
+    {{loginButtons}}
+  </div?
 </template>
 
 <template name = "admin">
-  <h1>Registered Attendees</h1>
+  <h2>Registered Attendees</h2>
   <table>
-    <tr>
-    	<th>Attendee</th><th>Company</th>
-    	<th>Email</th><th>Twitter</th>
-    	<th>Referrer</th><th>Time</th></tr>
+    <thead>
+      <tr>
+      	<th>Attendee</th>
+        <th>Company</th>
+      	<th>Email</th>
+        <th>Twitter</th>
+      	<th>Referrer</th>
+        <th>Time</th>
+      </tr>
+    </thead>
     {{#each attendees}}
       <tr>
       		<td>{{ this.name }}</td><td>{{ this.company }}</td>
