@@ -65,6 +65,10 @@ if (Meteor.isClient) {
   Template.admin.attendees = function() {
     return Attendees.find().fetch();
   };
+
+  Template.attendeeCount.n = function() {
+    return Attendees.find().count();
+  };
 }
 
 if (Meteor.isServer) {
