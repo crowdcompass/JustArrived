@@ -6,6 +6,7 @@
 
 <body>
   <div class='header'>
+    <h1>JustArrived</h1>
   </div>
   <div class='content'>
   	{{> main}}
@@ -25,9 +26,9 @@
 
 <template name = "registration">
   {{#if registrationSubmitted }}
-    <h1>Thanks for announcing your arrival!</h1>
+    <h2>Thanks for announcing your arrival!</h2>
   {{else }}
-  <h1>Announce your arrival!</h1>
+  <h2>Announce your arrival!</h2>
     <p>Share that you've arrived with others here, and help people connect with you after the event.</p>
     <form>
       {{#if showBadEmail}}
