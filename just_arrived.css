@@ -292,7 +292,7 @@ table thead:first-child tr:first-child th:last-child {
 only screen and (-o-min-device-pixel-ratio: 2/1),
 only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and (min-device-pixel-ratio: 2) {
-  h1 {
+  h1 a {
     background: transparent url("./justarrived2x.png") no-repeat left bottom;
     background-size: 200px 29px;
   }
