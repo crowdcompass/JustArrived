@@ -28,6 +28,25 @@ Router.map(function () {
 
 if (Meteor.isClient) {
 
+  var id = 0,
+  cache = [];
+        
+  Handlebars.registerHelper("bindData", function(data) {
+    var dataKey = id++;
+    cache[dataKey] = data;
+
+    return "data-handlebar-id=" + dataKey;
+  });
+
+  Handlebars.getBoundData = function(handlebarId) {
+    if (typeof(handlebarId) !== "string") {
+        // If a string was not passed in, it is the html element, so grab it's id.
+        handlebarId = handlebarId.getAttribute("data-handlebar-id");
+    }
+
+    return cache[handlebarId];
+  };
+
   Router.configure({
     layout: 'layout',
   });
@@ -51,10 +70,12 @@ if (Meteor.isClient) {
     customAction: function() {
 
       this.render('wall');
-
-      // this.render({
-      //   footer: {to: 'footer', waitOn: false, data: false}
-      // });
+      setInterval(function() {
+        $('.js-timeago').each(function() {
+          var me = $(this);
+          me.text(moment(me.data('time')).fromNow());
+        })
+      }, 1000)
     }
   });
 
@@ -118,7 +139,27 @@ if (Meteor.isClient) {
   //   console.log('Accessing ' + location.href);
   //   return Attendees.find().fetch();
   // };
-
+  var first_render = false;
+  Template.wall.rendered = function() {
+    first_render = true;
+  }
+  Template.attendee_desktop.rendered = function() {
+    console.log(first_render);
+    if (first_render) {
+      $(this.firstNode).animate({
+        lineHeight: '40px',
+        opacity: 1
+      }, 700);
+    } else {
+      $(this.firstNode).css({lineHeight: '40px', opacity: 1});
+    }
+  }
+  Template.attendee_mobile.rendered = function() {
+    $(this.firstNode).animate({
+      lineHeight: '40px',
+      opacity: 1
+    }, 1000);
+  }
   Template.attendeeCount.n = function() {
     return Attendees.find().count();
   };
@@ -126,7 +167,7 @@ if (Meteor.isClient) {
   Handlebars.registerHelper('timeAgo', function(context, options) {
     //var f = options.hash.format || "MMM Do, YYYY";
     // return moment(Date(context)).format(f);
-    return moment().from(context, true);
+    return moment(context).fromNow();
 });
 
 }
