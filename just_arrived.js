@@ -13,22 +13,52 @@ function isAdmin(userId) {
  }
 }
 
-// Routes
-// Router.map(function () {
-//   this.route('main', {
-//     path: '/'
-//   });
+Router.map(function () {
+  this.route('main', {
+    path: '/'
+  });
 
-//   this.route('wall', {
-//     controller: 'WallController',
-//   });
-// });
+  this.route('wall', {
+    controller: 'WallController',
+    action: 'customAction'
+  });
+});
 
 /////////// Client
 
 if (Meteor.isClient) {
-  Meteor.subscribe('userData');
-  Meteor.subscribe('attendees');
+
+  Router.configure({
+    layout: 'layout',
+  });
+
+  Subscriptions = {
+    userData: Meteor.subscribe('userData'),
+    attendees: Meteor.subscribe('attendees')
+  };
+  
+  WallController = RouteController.extend({
+    template: 'wall',
+
+    waitOn: Subscriptions['attendees'],
+
+    data: function() {
+      return {
+        attendees: Attendees.find({}, {sort:{timestamp: -1}})
+      };
+    },
+
+    customAction: function() {
+
+      this.render('wall');
+
+      // this.render({
+      //   footer: {to: 'footer', waitOn: false, data: false}
+      // });
+    }
+  });
+
+
 
   Template.footer.events({
     'click .login' : function(evt, tmpl){
@@ -80,14 +110,21 @@ if (Meteor.isClient) {
     return Attendees.find().fetch();
   };
 
-  Template.wall.attendees = function() {
-    console.log('Accessing ' + location.href);
-    return Attendees.find().fetch();
-  };
+  // Template.wall.attendees = function() {
+  //   console.log('Accessing ' + location.href);
+  //   return Attendees.find().fetch();
+  // };
 
   Template.attendeeCount.n = function() {
     return Attendees.find().count();
   };
+
+  Handlebars.registerHelper('timeAgo', function(context, options) {
+    var f = options.hash.format || "MMM Do, YYYY";
+    // return moment(Date(context)).format(f);
+    return moment().from(context, true);
+});
+
 }
 
 /////////// Server
@@ -96,8 +133,6 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
   });
-
-  var Future = Npm.require('fibers/future');
 
   Meteor.publish("userData", function () {
     return Meteor.users.find({_id: this.userId},

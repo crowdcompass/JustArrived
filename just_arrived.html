@@ -5,16 +5,19 @@
 </head>
 
 <body>
+  
+</body>
+
+<template name="layout">
   <div class='header'>
     <h1>JustArrived</h1>
   </div>
+  
   <div class='content'>
-    {{> main }}
+    {{ yield }}
   </div>
-  <div class='footer'>
-  	{{> footer}}
-  </div>
-</body>
+
+</template>
 
 <template name="main">
   {{#if showAdmin}}
@@ -22,6 +25,10 @@
   {{else}}
     {{> registration}}
   {{/if}}
+
+  <div>  
+    {{> footer}}
+  </div>
 </template>
 
 <template name = "registration">
@@ -44,13 +51,15 @@
 </template>
 
 <template name = "footer">
-  <a href = "http://crowdcompass.com">CrowdCompass | An Essential Part of Your Next Event</a>
-  
-  <div class="admin-footer">
-    {{#if isAdmin}}
-    <a href = "#" class = "admin">toggle admin</a> | 
-    {{/if}}
-    {{loginButtons}}
+  <div class='footer'>
+    <a href = "http://crowdcompass.com">CrowdCompass | An Essential Part of Your Next Event</a>
+    
+    <div class="admin-footer">
+      {{#if isAdmin}}
+      <a href = "#" class = "admin">toggle admin</a> | 
+      {{/if}}
+      {{loginButtons}}
+    </div>
   </div>
 </template>
 
@@ -97,7 +106,7 @@
           <td>{{ this.name }}</td>
           <td>{{ this.company }}</td>
           <td>{{ this.twitter_id }}</td>
-          <td>{{ this.timestamp }}</td>
+          <td>{{ timeAgo this.timestamp format="MMMM YYYY" }} ago</td>
       </tr>
     {{/each }}
   </tbody>
