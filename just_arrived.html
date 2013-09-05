@@ -54,44 +54,6 @@
  		</form>
     {{> attendeeCount}}
   </div>
-  <div class="wrapper attendee-list">
-    <h2>Registered Attendees</h2>
-    <table class="table">
-      <thead>
-        <tr>
-        	<th>Attendee</th>
-          <th>Company</th>
-        	<th>Email</th>
-          <th>Twitter</th>
-          <!-- <th>Referrer</th> -->
-          <th>Time</th>
-        </tr>
-      </thead>
-      <tbody>
-      {{#each attendees}}
-        <tr>
-        		<td>{{ this.name }}</td>
-            <td>{{ this.company }}</td>
-        		<td>{{ this.email }}</td>
-            <td>{{ this.twitter_id }}</td>
-            <!-- <td>{{ this.referrer }}</td> -->
-            <td>{{ timeAgo this.timestamp }} ago</td>
-        </tr>
-      {{/each }}
-    </tbody>
-    </table>
-    <!-- Mobile display of attendees -->
-    <ul class="mobile">
-      {{#each attendees}}
-      <li>
-        <span>{{ this.name }}</span> <span class="timeAgo">{{ timeAgo this.timestamp }} ago</span><br/>
-        {{ this.company }}<br/>
-        {{ this.email }}<br/>
-        {{ this.twitter_id }}<br/>
-      </li>
-      {{/each}}
-    </ul>
-  </div>
 </template>
 
 <template name = "footer">
@@ -135,6 +97,7 @@
     </tbody>
     </table>
     <!-- Mobile display of attendees -->
+    <h3 class="mobile">Registered Attendees</h3>
     <ul class="mobile">
       {{#each attendees}}
       <li>
@@ -169,6 +132,17 @@
       {{/each }}
     </tbody>
     </table>
+    <!-- Mobile display of attendees -->
+    <h3 class="mobile">Wall Attendees</h3>
+    <ul class="mobile">
+      {{#each attendees}}
+      <li>
+        <span>{{ this.name }}</span> <span class="timeAgo">{{ timeAgo this.timestamp }} ago</span><br/>
+        {{ this.company }}<br/>
+        {{ this.twitter_id }}<br/>
+      </li>
+      {{/each}}
+    </ul>
   </div>
 </template>
 

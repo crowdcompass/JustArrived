@@ -286,7 +286,7 @@ only screen and (min-device-pixel-ratio: 2) {
   .attendee-list {
     width: 100%;
   }
-  table {
+  table, h2 {
     display: none;
   }
   .mobile {
