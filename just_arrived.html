@@ -29,6 +29,7 @@
     <h2>Thanks for announcing your arrival!</h2>
   {{else }}
     <p>Share your arrival with others and stay connected after the event.</p>
+    {{> attendeeCount}}
     <form>
       {{#if showBadEmail}}
         {{> badEmail}}
@@ -85,5 +86,9 @@
   <div class="error">
     <p>That's not a real email address...</p>
   </div>
+</template>
+
+<template name="attendeeCount">
+  <p><strong>{{n}}</strong> attendees are here</p>
 </template>
 
