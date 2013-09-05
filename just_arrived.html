@@ -9,7 +9,7 @@
     <h1>JustArrived</h1>
   </div>
   <div class='content'>
-  	{{> main}}
+    {{> main }}
   </div>
   <div class='footer'>
   	{{> footer}}
@@ -19,9 +19,9 @@
 <template name="main">
   {{#if showAdmin}}
     {{> admin}}
- {{else}}
+  {{else}}
     {{> registration}}
- {{/if}}
+  {{/if}}
 </template>
 
 <template name = "registration">
@@ -29,7 +29,6 @@
     <h2>Thanks for announcing your arrival!</h2>
   {{else }}
     <p>Share your arrival with others and stay connected after the event.</p>
-    {{> attendeeCount}}
     <form>
       {{#if showBadEmail}}
         {{> badEmail}}
@@ -41,6 +40,7 @@
       <button>Announce Your Arrival!</button>
   {{/if}}
  		</form>
+    {{> attendeeCount}}
 </template>
 
 <template name = "footer">
@@ -88,7 +88,24 @@
   </div>
 </template>
 
+<template name = "wall">
+  <h2>Wall Attendees</h2>
+  <table>
+    <tbody>
+    {{#each attendees}}
+      <tr>
+          <td>{{ this.name }}</td>
+          <td>{{ this.company }}</td>
+          <td>{{ this.twitter_id }}</td>
+          <td>{{ this.timestamp }}</td>
+      </tr>
+    {{/each }}
+  </tbody>
+  </table>
+</template>
+
 <template name="attendeeCount">
   <p><strong>{{n}}</strong> attendees are here</p>
 </template>
+
 

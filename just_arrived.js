@@ -13,9 +13,23 @@ function isAdmin(userId) {
  }
 }
 
+// Routes
+// Router.map(function () {
+//   this.route('main', {
+//     path: '/'
+//   });
+
+//   this.route('wall', {
+//     controller: 'WallController',
+//   });
+// });
+
+/////////// Client
+
 if (Meteor.isClient) {
   Meteor.subscribe('userData');
   Meteor.subscribe('attendees');
+
   Template.footer.events({
     'click .login' : function(evt, tmpl){
       Meteor.loginWithGithub();
@@ -66,15 +80,24 @@ if (Meteor.isClient) {
     return Attendees.find().fetch();
   };
 
+  Template.wall.attendees = function() {
+    console.log('Accessing ' + location.href);
+    return Attendees.find().fetch();
+  };
+
   Template.attendeeCount.n = function() {
     return Attendees.find().count();
   };
 }
 
+/////////// Server
+
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
   });
+
+  var Future = Npm.require('fibers/future');
 
   Meteor.publish("userData", function () {
     return Meteor.users.find({_id: this.userId},
