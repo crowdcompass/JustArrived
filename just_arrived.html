@@ -10,7 +10,9 @@
 
 <template name="layout">
   <div class='header'>
-    <h1>JustArrived</h1>
+    <div class="wrapper">
+      <h1>JustArrived</h1>
+    </div>
   </div>
   
   <div class='content'>
@@ -26,12 +28,15 @@
     {{> registration}}
   {{/if}}
 
-  <div>  
-    {{> footer}}
+  <div>
+    <div class="wrapper">
+      {{> footer}}
+    </div>
   </div>
 </template>
 
 <template name = "registration">
+  <div class="wrapper registration">
   {{#if registrationSubmitted }}
     <h2>Thanks for announcing your arrival!</h2>
   {{else }}
@@ -48,6 +53,45 @@
   {{/if}}
  		</form>
     {{> attendeeCount}}
+  </div>
+  <div class="wrapper attendee-list">
+    <h2>Registered Attendees</h2>
+    <table class="table">
+      <thead>
+        <tr>
+        	<th>Attendee</th>
+          <th>Company</th>
+        	<th>Email</th>
+          <th>Twitter</th>
+          <!-- <th>Referrer</th> -->
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each attendees}}
+        <tr>
+        		<td>{{ this.name }}</td>
+            <td>{{ this.company }}</td>
+        		<td>{{ this.email }}</td>
+            <td>{{ this.twitter_id }}</td>
+            <!-- <td>{{ this.referrer }}</td> -->
+            <td>{{ timeAgo this.timestamp }} ago</td>
+        </tr>
+      {{/each }}
+    </tbody>
+    </table>
+    <!-- Mobile display of attendees -->
+    <ul class="mobile">
+      {{#each attendees}}
+      <li>
+        <span>{{ this.name }}</span> <span class="timeAgo">{{ timeAgo this.timestamp }} ago</span><br/>
+        {{ this.company }}<br/>
+        {{ this.email }}<br/>
+        {{ this.twitter_id }}<br/>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
 </template>
 
 <template name = "footer">
@@ -64,31 +108,44 @@
 </template>
 
 <template name = "admin">
-  <h2>Registered Attendees</h2>
-  <table>
-    <thead>
-      <tr>
-      	<th>Attendee</th>
-        <th>Company</th>
-      	<th>Email</th>
-        <th>Twitter</th>
-        <!-- <th>Referrer</th> -->
-        <th>Time</th>
-      </tr>
-    </thead>
-    <tbody>
-    {{#each attendees}}
-      <tr>
-      		<td>{{ this.name }}</td>
-          <td>{{ this.company }}</td>
-      		<td>{{ this.email }}</td>
-          <td>{{ this.twitter_id }}</td>
-          <!-- <td>{{ this.referrer }}</td> -->
-          <td>{{ this.timestamp }}</td>
-      </tr>
-    {{/each }}
-  </tbody>
-  </table>
+  <div class="wrapper attendee-list">
+    <h2>Registered Attendees</h2>
+    <table>
+      <thead>
+        <tr>
+        	<th>Attendee</th>
+          <th>Company</th>
+        	<th>Email</th>
+          <th>Twitter</th>
+          <!-- <th>Referrer</th> -->
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each attendees}}
+        <tr>
+        		<td>{{ this.name }}</td>
+            <td>{{ this.company }}</td>
+        		<td>{{ this.email }}</td>
+            <td>{{ this.twitter_id }}</td>
+            <!-- <td>{{ this.referrer }}</td> -->
+            <td>{{ timeAgo this.timestamp }} ago</td>
+        </tr>
+      {{/each }}
+    </tbody>
+    </table>
+    <!-- Mobile display of attendees -->
+    <ul class="mobile">
+      {{#each attendees}}
+      <li>
+        <span>{{ this.name }}</span> <span class="timeAgo">{{ timeAgo this.timestamp }} ago</span><br/>
+        {{ this.company }}<br/>
+        {{ this.email }}<br/>
+        {{ this.twitter_id }}<br/>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
 </template>
 
 <template name="badEmail">
@@ -98,19 +155,21 @@
 </template>
 
 <template name = "wall">
-  <h2>Wall Attendees</h2>
-  <table>
-    <tbody>
-    {{#each attendees}}
-      <tr>
-          <td>{{ this.name }}</td>
-          <td>{{ this.company }}</td>
-          <td>{{ this.twitter_id }}</td>
-          <td>{{ timeAgo this.timestamp }} ago</td>
-      </tr>
-    {{/each }}
-  </tbody>
-  </table>
+  <div class="wrapper attendee-list">
+    <h2>Wall Attendees</h2>
+    <table>
+      <tbody>
+      {{#each attendees}}
+        <tr>
+            <td>{{ this.name }}</td>
+            <td>{{ this.company }}</td>
+            <td>{{ this.twitter_id }}</td>
+            <td>{{ timeAgo this.timestamp }} ago</td>
+        </tr>
+      {{/each }}
+    </tbody>
+    </table>
+  </div>
 </template>
 
 <template name="attendeeCount">

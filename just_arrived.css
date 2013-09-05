@@ -31,30 +31,59 @@ h1 {
   background: transparent url("./justarrived.png") no-repeat left bottom; 
 }
 
-/* for high resolution display */
-
-@media only screen and (min--moz-device-pixel-ratio: 2),
-only screen and (-o-min-device-pixel-ratio: 2/1),
-only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (min-device-pixel-ratio: 2) {
-  h1 {
-    background: transparent url("./justarrived2x.png") no-repeat left bottom;
-    background-size: 200px 29px;
-  }
-}
-
 p {
   font-size: 16px;
   line-height: 24px;
   color: #666;
 }
 
-.content{
-  margin:0 auto;
-  width:300px;
-  padding:0 0 20px 0;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  background: white;
+  font-size: 14px;
+}
+
+li {
+  padding: 10px;
+  border-bottom: thin solid #faf4f1;
+  border-top: thin solid #fcfcfc;
+}
+li:first-child {
+  border-top: none;
+}
+li:last-child {
+  border-bottom: none;
+}
+
+li span {
+  font-weight: bold;
+  font-size: 16px;
+}
+li span.timeAgo {
+  font-weight: normal;
+  font-size: 13px;
+  color: #999;
+  float: right;
+}
+
+.content {
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 0 20px 0;
   font-weight:lighter;
   text-align:center;
+}
+
+.wrapper {
+  margin:0 auto;
+  width: 300px;
+}
+
+.attendee-list {
+  width: 860px;
 }
 
 form {
@@ -198,7 +227,7 @@ table{
   border-radius: 4px;
   font-size: 14px;
   width: 860px;
-  margin-left: -280px;
+/*  margin-left: -280px;*/
 }
 table thead {
   background: #DB5858;
@@ -235,4 +264,32 @@ table thead:first-child tr:first-child th:last-child {
   -webkit-border-radius: 0 4px 0 0;
   -moz-border-radius: 0 4px 0 0;
   border-radius: 0 4px 0 0;
+}
+
+.mobile {
+  display:none;
+}
+
+/* for high resolution display */
+
+@media only screen and (min--moz-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2/1),
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-device-pixel-ratio: 2) {
+  h1 {
+    background: transparent url("./justarrived2x.png") no-repeat left bottom;
+    background-size: 200px 29px;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .attendee-list {
+    width: 100%;
+  }
+  table {
+    display: none;
+  }
+  .mobile {
+    display:block;
+  }
 }
