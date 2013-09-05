@@ -120,7 +120,7 @@ if (Meteor.isClient) {
   };
 
   Handlebars.registerHelper('timeAgo', function(context, options) {
-    var f = options.hash.format || "MMM Do, YYYY";
+    //var f = options.hash.format || "MMM Do, YYYY";
     // return moment(Date(context)).format(f);
     return moment().from(context, true);
 });
