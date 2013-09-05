@@ -155,10 +155,14 @@ if (Meteor.isClient) {
     }
   }
   Template.attendee_mobile.rendered = function() {
-    $(this.firstNode).animate({
-      lineHeight: '40px',
-      opacity: 1
-    }, 1000);
+    if (first_render) {
+      $(this.firstNode).animate({
+        height: '56px',
+        opacity: 1
+      }, 700);
+    } else {
+      $(this.firstNode).css({height: '56px', opacity: 1});
+    }
   }
   Template.attendeeCount.n = function() {
     return Attendees.find().count();

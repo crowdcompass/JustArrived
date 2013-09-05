@@ -56,7 +56,15 @@ li {
   padding: 10px;
   border-bottom: thin solid #faf4f1;
   border-top: thin solid #fcfcfc;
+  height: 0;
+  overflow: hidden;
 }
+.public li {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
 li:first-child {
   border-top: none;
 }
@@ -259,7 +267,7 @@ table th {
   border-left: 1px solid #ddd;
   text-align: center;
 }
-table tbody tr {
+.public table tbody tr {
   line-height: 0;
   overflow: hidden;
   opacity: 0;
