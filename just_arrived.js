@@ -87,6 +87,10 @@ if (Meteor.isClient) {
         Session.set("showBadEmail", true);
       }
       return false;
+    },
+
+    'click .rearrival' : function(evt, tmpl) {
+      Session.set("registrationSubmitted", false);
     }
   });
 

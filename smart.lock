@@ -4,7 +4,8 @@
     "basePackages": {
       "router": {},
       "iron-router": {},
-      "moment": {}
+      "moment": {},
+      "twitter-api": {}
     },
     "packages": {
       "router": {
@@ -21,6 +22,11 @@
         "git": "https://github.com/possibilities/meteor-moment.git",
         "tag": "v1.7.0",
         "commit": "c64b6ec0e714b9556f4b6643d430b868ba69d3d7"
+      },
+      "twitter-api": {
+        "git": "https://github.com/Sewdn/meteor-twitter-api.git",
+        "tag": "v0.1.0",
+        "commit": "c7a0dbfe61f6207d40cc1863c45b179aadadbb6a"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",
