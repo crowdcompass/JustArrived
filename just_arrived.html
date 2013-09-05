@@ -130,6 +130,7 @@
 <template name = "wall">
   <div class="wrapper attendee-list">
     <h2>Attendees here: {{> attendeeCount}}</h2>
+    <h3 class="mobile">Attendees here: {{> attendeeCount}}</h3>
     <p>To announce your arrival, visit <a href="/">arrived.crowd.cc</a></p>
     <table>
       <tbody>
@@ -144,7 +145,6 @@
     </tbody>
     </table>
     <!-- Mobile display of attendees -->
-    <h3 class="mobile">Attendees here: {{> attendeeCount}}</h3>
     <ul class="mobile">
       {{#each attendees}}
       <li>
