@@ -127,7 +127,7 @@
   </div>
 </template>
 
-<template name = "wall">
+<template name="wall">
   <div class="wrapper attendee-list">
     <h2>Attendees here: {{> attendeeCount}}</h2>
     <h3 class="mobile">Attendees here: {{> attendeeCount}}</h3>
@@ -135,31 +135,41 @@
     <table>
       <tbody>
       {{#each attendees}}
-        <tr>
-            <td>{{ this.name }}</td>
-            <td>{{ this.company }}</td>
-            <td>{{ this.twitter_id }}</td>
-            <td>{{ timeAgo this.timestamp }} ago</td>
-        </tr>
+        {{> attendee_desktop}}
       {{/each }}
     </tbody>
     </table>
     <!-- Mobile display of attendees -->
     <ul class="mobile">
       {{#each attendees}}
-      <li>
-        <span>{{ this.name }}</span> <span class="timeAgo">{{ timeAgo this.timestamp }} ago</span><br/>
-        {{ this.company }}<br/>
-        {{ this.twitter_id }}<br/>
-      </li>
+        {{> attendee_mobile}}
       {{/each}}
     </ul>
   </div>
 </template>
 
+
+<template name="attendee_desktop">
+  <tr>
+    <td>{{ name }}</td>
+    <td>{{ company }}</td>
+    <td>{{ twitter_id }}</td>
+    <!-- <td>{{ referrer }}</td> -->
+    <td class="js-timeago" data-time="{{timestamp}}">{{ timeAgo timestamp }}</td>
+  </tr>
+</template>
+
+<template name="attendee_mobile">
+  <li>
+    <span>{{ this.name }}</span> <span class="js-timeago timeAgo" data-time="{{timestamp}}">{{ timeAgo this.timestamp }}</span><br/>
+    {{ this.company }}<br/>
+    {{ this.twitter_id }}<br/>
+  </li>
+</template>
+
+
 <template name="attendeeCount">
   {{n}}
-  <!-- <p><strong>{{n}}</strong> attendees are here</p> -->
 </template>
 
 
